@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS tb_order;
+
+CREATE TABLE tb_order
+(
+    id BIGINT(20) NOT NULL COMMENT '主键ID',
+    user_name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
+    goods_name VARCHAR(50) NULL DEFAULT NULL COMMENT '货物名称',
+    PRIMARY KEY (id)
+);
