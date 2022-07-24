@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Retryer 提供了构造方法，用来创建一个指定规则的 Retryer：
+ * 这个方法可以通过传入尝试时间策略、停止重试策略、重试间隔等待策略、重试阻塞策略、拒绝策略等策略
+ * 来指定一个请求的重试如何进行。
+ * RetryerBuilder的retryIfXXX()方法用来设置在什么情况下进行重试，总体上可以分为根据执行异常进行重试和根据方法执行结果进行重试两类。
  * @author alewu
  * @date 2020/8/7
  */

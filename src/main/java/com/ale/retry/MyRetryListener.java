@@ -5,6 +5,8 @@ import com.github.rholder.retry.RetryListener;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 当发生重试之后，如我们需要做一些额外的处理动作，比如发送告警邮件，记录下重试的次数、结果等信息，那么可以使用RetryListener。
+ * 每次重试之后，guava-retrying会自动回调我们注册的监听。也可以注册多个RetryListener，会按照注册顺序依次调用。
  * @author alewu
  * @date 2020/7/31
  */
