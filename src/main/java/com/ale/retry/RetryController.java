@@ -4,6 +4,7 @@ import com.github.rholder.retry.RetryException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +29,12 @@ public class RetryController {
      */
     @GetMapping("")
     public ResponseEntity<String> retry() {
+        StopWatch sw = new StopWatch("RetryController.retry");
+        sw.start("StopWatch");
         try {
-            customRetryerBuilder.<Boolean>build().call(customCallable);
+            Boolean result = customRetryerBuilder.<Boolean>build().call(customCallable);
+            sw.stop();
+            log.info("call:{}, {} ms", result, sw.getLastTaskTimeMillis());
         } catch (
                 ExecutionException e) {
             log.error("execute retry failed", e);
